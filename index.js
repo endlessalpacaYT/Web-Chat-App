@@ -1,6 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const jwt = require('jsonwebtoken');
+const path = require('path');
 require('dotenv').config(); 
 
 const app = express(); 
@@ -14,6 +15,22 @@ app.use('/api/users', userRoutes);
 app.get('/', (req, res) => {
     res.send('The Backend Is Running!');
 });
+
+app.get("/signup", (req, res) => {
+    res.sendFile(path.join(__dirname + "/Frontend/signup/index.html"));
+});
+
+app.get('/signup/script', (req, res) => {
+    res.sendFile(path.join(__dirname + "/Frontend/signup/signup.js"));
+})
+
+app.get("/login", (req, res) => {
+    res.sendFile(path.join(__dirname + "/Frontend/login/index.html"));
+});
+
+app.get('/login/script', (req, res) => {
+    res.sendFile(path.join(__dirname + "/Frontend/login/login.js"));
+})
 
 function setUpHTTPServer() {
     app.listen(PORT, () => {
