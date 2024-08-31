@@ -13,7 +13,7 @@ app.use(express.json());
 app.use('/api/users', userRoutes);
 
 app.get('/', (req, res) => {
-    res.send('The Backend Is Running!');
+    res.sendFile(path.join(__dirname + "/Frontend/landingpage/index.html"));
 });
 
 app.get("/signup", (req, res) => {
